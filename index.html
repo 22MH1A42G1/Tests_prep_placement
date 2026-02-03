@@ -2,18 +2,19 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Placement Quiz – Day 1 & Day 2</title>
+<title>Placement Quiz – Day 1 & Day 2 (60 Questions)</title>
+
 <style>
 body {
     font-family: Arial, sans-serif;
-    background: #f4f6f8;
+    background: #eef2f5;
     padding: 20px;
 }
 .container {
-    max-width: 700px;
+    max-width: 900px;
     margin: auto;
-    background: white;
-    padding: 20px;
+    background: #fff;
+    padding: 25px;
     border-radius: 8px;
 }
 h1 {
@@ -21,27 +22,31 @@ h1 {
     color: #2c3e50;
 }
 .question {
-    margin-bottom: 15px;
+    margin-bottom: 20px;
 }
 .options label {
     display: block;
-    padding: 5px;
+    padding: 6px;
+    cursor: pointer;
 }
 button {
+    display: block;
+    margin: auto;
+    padding: 12px 20px;
     background: #3498db;
     color: white;
     border: none;
-    padding: 10px 15px;
+    border-radius: 6px;
+    font-size: 16px;
     cursor: pointer;
-    border-radius: 5px;
 }
 button:hover {
     background: #2980b9;
 }
 #result {
-    font-size: 20px;
+    margin-top: 25px;
+    font-size: 22px;
     text-align: center;
-    margin-top: 20px;
     color: green;
 }
 </style>
@@ -49,141 +54,116 @@ button:hover {
 
 <body>
 <div class="container">
-<h1>Placement Quiz (Day 1 & Day 2)</h1>
-
-<form id="quizForm">
-
-<div class="question">
-<b>1. If price increases by 20% and decreases by 20%, net change?</b>
-<div class="options">
-<label><input type="radio" name="q1" value="A"> No change</label>
-<label><input type="radio" name="q1" value="B"> 4% increase</label>
-<label><input type="radio" name="q1" value="C"> 4% decrease</label>
-<label><input type="radio" name="q1" value="D"> 2% decrease</label>
-</div>
-</div>
-
-<div class="question">
-<b>2. Boys : Girls = 3 : 2, boys = 30. Girls?</b>
-<div class="options">
-<label><input type="radio" name="q2" value="A"> 15</label>
-<label><input type="radio" name="q2" value="B"> 18</label>
-<label><input type="radio" name="q2" value="C"> 20</label>
-<label><input type="radio" name="q2" value="D"> 25</label>
-</div>
-</div>
-
-<div class="question">
-<b>3. Next number: 1, 4, 9, 16, ?</b>
-<div class="options">
-<label><input type="radio" name="q3" value="A"> 20</label>
-<label><input type="radio" name="q3" value="B"> 25</label>
-<label><input type="radio" name="q3" value="C"> 24</label>
-<label><input type="radio" name="q3" value="D"> 32</label>
-</div>
-</div>
-
-<div class="question">
-<b>4. Binary search works only when array is?</b>
-<div class="options">
-<label><input type="radio" name="q4" value="A"> Small</label>
-<label><input type="radio" name="q4" value="B"> Sorted</label>
-<label><input type="radio" name="q4" value="C"> Unique</label>
-<label><input type="radio" name="q4" value="D"> Random</label>
-</div>
-</div>
-
-<div class="question">
-<b>5. Which is NOT an advantage of DBMS?</b>
-<div class="options">
-<label><input type="radio" name="q5" value="A"> Reduced redundancy</label>
-<label><input type="radio" name="q5" value="B"> Data security</label>
-<label><input type="radio" name="q5" value="C"> Increased inconsistency</label>
-<label><input type="radio" name="q5" value="D"> Backup</label>
-</div>
-</div>
-
-<div class="question">
-<b>6. Main function of Operating System?</b>
-<div class="options">
-<label><input type="radio" name="q6" value="A"> Internet access</label>
-<label><input type="radio" name="q6" value="B"> Resource management</label>
-<label><input type="radio" name="q6" value="C"> Coding</label>
-<label><input type="radio" name="q6" value="D"> Gaming</label>
-</div>
-</div>
-
-<div class="question">
-<b>7. Java does not support multiple inheritance because?</b>
-<div class="options">
-<label><input type="radio" name="q7" value="A"> Slow execution</label>
-<label><input type="radio" name="q7" value="B"> Ambiguity</label>
-<label><input type="radio" name="q7" value="C"> JVM issue</label>
-<label><input type="radio" name="q7" value="D"> Syntax problem</label>
-</div>
-</div>
-
-<div class="question">
-<b>8. AWS virtual firewall for EC2?</b>
-<div class="options">
-<label><input type="radio" name="q8" value="A"> IAM</label>
-<label><input type="radio" name="q8" value="B"> VPC</label>
-<label><input type="radio" name="q8" value="C"> Security Group</label>
-<label><input type="radio" name="q8" value="D"> AMI</label>
-</div>
-</div>
-
-<div class="question">
-<b>9. HTML tag used to create a form?</b>
-<div class="options">
-<label><input type="radio" name="q9" value="A"> input</label>
-<label><input type="radio" name="q9" value="B"> form</label>
-<label><input type="radio" name="q9" value="C"> textarea</label>
-<label><input type="radio" name="q9" value="D"> fieldset</label>
-</div>
-</div>
-
-<div class="question">
-<b>10. CSS property for text color?</b>
-<div class="options">
-<label><input type="radio" name="q10" value="A"> background</label>
-<label><input type="radio" name="q10" value="B"> font</label>
-<label><input type="radio" name="q10" value="C"> color</label>
-<label><input type="radio" name="q10" value="D"> style</label>
-</div>
-</div>
-
-<button type="button" onclick="checkScore()">Submit Test</button>
-</form>
-
+<h1>Placement Quiz – Day 1 & Day 2</h1>
+<form id="quizForm"></form>
+<button onclick="submitQuiz()">Submit Test</button>
 <div id="result"></div>
 </div>
 
 <script>
-function checkScore() {
-    const answers = {
-        q1: "C",
-        q2: "C",
-        q3: "B",
-        q4: "B",
-        q5: "C",
-        q6: "B",
-        q7: "B",
-        q8: "C",
-        q9: "B",
-        q10: "C"
-    };
+const questions = [
 
+/* ================= DAY 1 (30 QUESTIONS) ================= */
+
+{q:"1. If 20% of x = 40, x = ?", o:["100","200","150","80"], a:1},
+{q:"2. 3 : 2 = 30 : ?", o:["10","15","20","25"], a:2},
+{q:"3. Next number: 2, 6, 12, 20, ?", o:["28","30","32","36"], a:1},
+{q:"4. 25% of 200 = ?", o:["25","50","75","100"], a:1},
+{q:"5. Profit when CP=100, SP=120?", o:["10","15","20","25"], a:2},
+{q:"6. Which is a prime number?", o:["9","15","17","21"], a:2},
+{q:"7. Series: 1,4,9,16, ?", o:["20","25","30","36"], a:1},
+{q:"8. Average of 2,4,6,8?", o:["4","5","6","7"], a:1},
+{q:"9. Simple Interest formula?", o:["PTR/100","PRT","P+I","None"], a:0},
+{q:"10. Time = Distance / ?", o:["Speed","Work","Force","Power"], a:0},
+
+{q:"11. Binary search time complexity?", o:["O(n)","O(log n)","O(n²)","O(1)"], a:1},
+{q:"12. Python list index starts from?", o:["0","1","-1","Any"], a:0},
+{q:"13. Which is mutable in Python?", o:["tuple","string","list","int"], a:2},
+{q:"14. Worst case of linear search?", o:["O(1)","O(log n)","O(n)","O(n²)"], a:2},
+{q:"15. Stack follows?", o:["FIFO","LIFO","Random","Tree"], a:1},
+
+{q:"16. OS full form?", o:["Open System","Operating System","Order System","Optical System"], a:1},
+{q:"17. Which manages memory?", o:["Compiler","OS","CPU","User"], a:1},
+{q:"18. Which is not OS type?", o:["Batch","Real-time","Compiler","Distributed"], a:2},
+{q:"19. Process is?", o:["Program in execution","Program","Thread","CPU"], a:0},
+
+{q:"20. OOP principle for data hiding?", o:["Inheritance","Encapsulation","Polymorphism","Abstraction"], a:1},
+{q:"21. Java uses which keyword to inherit?", o:["this","super","extends","implements"], a:2},
+{q:"22. Object is instance of?", o:["Method","Variable","Class","Package"], a:2},
+
+{q:"23. AWS full form?", o:["Amazon Web Service","Amazon Web Services","Advanced Web Service","None"], a:1},
+{q:"24. EC2 is?", o:["Storage","Compute","Database","Network"], a:1},
+{q:"25. HTML stands for?", o:["High Text ML","Hyper Text Markup Language","Home Tool ML","None"], a:1},
+
+/* ================= DAY 2 (30 QUESTIONS) ================= */
+
+{q:"26. If a:b=2:3 and sum=25, a=?", o:["10","15","20","5"], a:0},
+{q:"27. 40% of 250?", o:["100","90","110","120"], a:0},
+{q:"28. Next: 5,10,20,40, ?", o:["45","50","60","80"], a:3},
+{q:"29. Speed formula?", o:["D×T","D/T","T/D","None"], a:1},
+{q:"30. 10% of 500?", o:["25","50","75","100"], a:1},
+
+{q:"31. Binary search needs?", o:["Sorted array","Large array","Unique","None"], a:0},
+{q:"32. Which is LIFO?", o:["Queue","Stack","Array","Tree"], a:1},
+{q:"33. Python uses indentation for?", o:["Loop","Condition","Block","All"], a:3},
+{q:"34. Which is immutable?", o:["List","Set","Tuple","Dict"], a:2},
+{q:"35. pop() removes from?", o:["Start","End","Random","None"], a:1},
+
+{q:"36. DBMS stands for?", o:["Database Management System","Data Basic MS","Digital Base","None"], a:0},
+{q:"37. SQL is?", o:["Procedural","Query language","OS","Compiler"], a:1},
+{q:"38. Primary key allows?", o:["Duplicates","NULL","Unique","Multiple"], a:2},
+{q:"39. Which is DDL?", o:["SELECT","INSERT","CREATE","UPDATE"], a:2},
+
+{q:"40. Java multiple inheritance avoided due to?", o:["Speed","Ambiguity","Memory","Syntax"], a:1},
+{q:"41. Interface uses?", o:["extends","implements","super","this"], a:1},
+{q:"42. JVM converts bytecode to?", o:["Assembly","Machine code","Python","C"], a:1},
+
+{q:"43. Security group acts as?", o:["Firewall","Router","Switch","Server"], a:0},
+{q:"44. S3 is?", o:["Compute","Storage","Network","DB"], a:1},
+{q:"45. CSS used for?", o:["Structure","Style","Logic","DB"], a:1},
+
+{q:"46. HTML tag for link?", o:["a","p","link","href"], a:0},
+{q:"47. CSS selector starts with #?", o:["Class","ID","Tag","All"], a:1},
+{q:"48. Which is frontend?", o:["Python","HTML","SQL","Java"], a:1},
+{q:"49. REST uses?", o:["HTTP","FTP","SMTP","TCP"], a:0},
+{q:"50. GET method used for?", o:["Insert","Update","Fetch","Delete"], a:2}
+/* ===== ADDITIONAL QUESTIONS TO MAKE TOTAL = 60 ===== */
+
+{q:"51. Which data structure is used for recursion?", o:["Queue","Stack","Array","Tree"], a:1},
+{q:"52. Time complexity of accessing array element?", o:["O(n)","O(log n)","O(1)","O(n²)"], a:2},
+{q:"53. Which SQL command removes a table?", o:["DELETE","DROP","REMOVE","TRUNCATE"], a:1},
+{q:"54. Foreign key is used to?", o:["Identify row","Ensure uniqueness","Link tables","Sort data"], a:2},
+{q:"55. Which normal form removes partial dependency?", o:["1NF","2NF","3NF","BCNF"], a:1},
+
+{q:"56. Which AWS service is serverless?", o:["EC2","Lambda","S3","VPC"], a:1},
+{q:"57. Default port of HTTP?", o:["21","22","80","443"], a:2},
+{q:"58. CSS property for spacing inside border?", o:["margin","padding","border","gap"], a:1},
+{q:"59. Which is backend language?", o:["HTML","CSS","JavaScript","Python"], a:3},
+{q:"60. POST method is used for?", o:["Fetch data","Update data","Send data","Delete data"], a:2}
+];
+
+const form = document.getElementById("quizForm");
+
+questions.forEach((q, i) => {
+    let html = `<div class="question"><b>${q.q}</b>`;
+    q.o.forEach((opt, idx) => {
+        html += `
+        <label>
+        <input type="radio" name="q${i}" value="${idx}"> ${opt}
+        </label>`;
+    });
+    html += `</div>`;
+    form.innerHTML += html;
+});
+
+function submitQuiz() {
     let score = 0;
-    for (let q in answers) {
-        let selected = document.querySelector(`input[name="${q}"]:checked`);
-        if (selected && selected.value === answers[q]) {
-            score++;
-        }
-    }
-
+    questions.forEach((q, i) => {
+        let ans = document.querySelector(`input[name="q${i}"]:checked`);
+        if (ans && parseInt(ans.value) === q.a) score++;
+    });
     document.getElementById("result").innerHTML =
-        `Your Score: ${score} / 10`;
+        `🎯 Your Score: ${score} / ${questions.length}`;
 }
 </script>
 
