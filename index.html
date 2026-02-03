@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Placement Quiz – Day 1 & Day 2</title>
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f6f8;
+    padding: 20px;
+}
+.container {
+    max-width: 700px;
+    margin: auto;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+}
+h1 {
+    text-align: center;
+    color: #2c3e50;
+}
+.question {
+    margin-bottom: 15px;
+}
+.options label {
+    display: block;
+    padding: 5px;
+}
+button {
+    background: #3498db;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+button:hover {
+    background: #2980b9;
+}
+#result {
+    font-size: 20px;
+    text-align: center;
+    margin-top: 20px;
+    color: green;
+}
+</style>
+</head>
+
+<body>
+<div class="container">
+<h1>Placement Quiz (Day 1 & Day 2)</h1>
+
+<form id="quizForm">
+
+<div class="question">
+<b>1. If price increases by 20% and decreases by 20%, net change?</b>
+<div class="options">
+<label><input type="radio" name="q1" value="A"> No change</label>
+<label><input type="radio" name="q1" value="B"> 4% increase</label>
+<label><input type="radio" name="q1" value="C"> 4% decrease</label>
+<label><input type="radio" name="q1" value="D"> 2% decrease</label>
+</div>
+</div>
+
+<div class="question">
+<b>2. Boys : Girls = 3 : 2, boys = 30. Girls?</b>
+<div class="options">
+<label><input type="radio" name="q2" value="A"> 15</label>
+<label><input type="radio" name="q2" value="B"> 18</label>
+<label><input type="radio" name="q2" value="C"> 20</label>
+<label><input type="radio" name="q2" value="D"> 25</label>
+</div>
+</div>
+
+<div class="question">
+<b>3. Next number: 1, 4, 9, 16, ?</b>
+<div class="options">
+<label><input type="radio" name="q3" value="A"> 20</label>
+<label><input type="radio" name="q3" value="B"> 25</label>
+<label><input type="radio" name="q3" value="C"> 24</label>
+<label><input type="radio" name="q3" value="D"> 32</label>
+</div>
+</div>
+
+<div class="question">
+<b>4. Binary search works only when array is?</b>
+<div class="options">
+<label><input type="radio" name="q4" value="A"> Small</label>
+<label><input type="radio" name="q4" value="B"> Sorted</label>
+<label><input type="radio" name="q4" value="C"> Unique</label>
+<label><input type="radio" name="q4" value="D"> Random</label>
+</div>
+</div>
+
+<div class="question">
+<b>5. Which is NOT an advantage of DBMS?</b>
+<div class="options">
+<label><input type="radio" name="q5" value="A"> Reduced redundancy</label>
+<label><input type="radio" name="q5" value="B"> Data security</label>
+<label><input type="radio" name="q5" value="C"> Increased inconsistency</label>
+<label><input type="radio" name="q5" value="D"> Backup</label>
+</div>
+</div>
+
+<div class="question">
+<b>6. Main function of Operating System?</b>
+<div class="options">
+<label><input type="radio" name="q6" value="A"> Internet access</label>
+<label><input type="radio" name="q6" value="B"> Resource management</label>
+<label><input type="radio" name="q6" value="C"> Coding</label>
+<label><input type="radio" name="q6" value="D"> Gaming</label>
+</div>
+</div>
+
+<div class="question">
+<b>7. Java does not support multiple inheritance because?</b>
+<div class="options">
+<label><input type="radio" name="q7" value="A"> Slow execution</label>
+<label><input type="radio" name="q7" value="B"> Ambiguity</label>
+<label><input type="radio" name="q7" value="C"> JVM issue</label>
+<label><input type="radio" name="q7" value="D"> Syntax problem</label>
+</div>
+</div>
+
+<div class="question">
+<b>8. AWS virtual firewall for EC2?</b>
+<div class="options">
+<label><input type="radio" name="q8" value="A"> IAM</label>
+<label><input type="radio" name="q8" value="B"> VPC</label>
+<label><input type="radio" name="q8" value="C"> Security Group</label>
+<label><input type="radio" name="q8" value="D"> AMI</label>
+</div>
+</div>
+
+<div class="question">
+<b>9. HTML tag used to create a form?</b>
+<div class="options">
+<label><input type="radio" name="q9" value="A"> input</label>
+<label><input type="radio" name="q9" value="B"> form</label>
+<label><input type="radio" name="q9" value="C"> textarea</label>
+<label><input type="radio" name="q9" value="D"> fieldset</label>
+</div>
+</div>
+
+<div class="question">
+<b>10. CSS property for text color?</b>
+<div class="options">
+<label><input type="radio" name="q10" value="A"> background</label>
+<label><input type="radio" name="q10" value="B"> font</label>
+<label><input type="radio" name="q10" value="C"> color</label>
+<label><input type="radio" name="q10" value="D"> style</label>
+</div>
+</div>
+
+<button type="button" onclick="checkScore()">Submit Test</button>
+</form>
+
+<div id="result"></div>
+</div>
+
+<script>
+function checkScore() {
+    const answers = {
+        q1: "C",
+        q2: "C",
+        q3: "B",
+        q4: "B",
+        q5: "C",
+        q6: "B",
+        q7: "B",
+        q8: "C",
+        q9: "B",
+        q10: "C"
+    };
+
+    let score = 0;
+    for (let q in answers) {
+        let selected = document.querySelector(`input[name="${q}"]:checked`);
+        if (selected && selected.value === answers[q]) {
+            score++;
+        }
+    }
+
+    document.getElementById("result").innerHTML =
+        `Your Score: ${score} / 10`;
+}
+</script>
+
+</body>
+</html>
