@@ -1,18 +1,89 @@
-<!-- Updated index.html content with fixed JavaScript template literals -->
-
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Test Prep Placement</title>
-    <script>
-        // Example of a fixed template literal
-        const message = `This is a fixed template literal.`;
-        console.log(message);
-        // More script content...
-    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Application</title>
+    <style>
+        body {
+            background: linear-gradient(to right, #ff7e5f, #feb47b);
+            font-family: Arial, sans-serif;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            overflow: hidden;
+        }
+        .quiz-container {
+            max-width: 800px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+        /* Add more CSS styling as needed */
+    </style>
 </head>
 <body>
-    <h1>Test Prep Placement</h1>
-    <!-- Other content -->
+    <div class="quiz-container">
+        <h1>Online Quiz</h1>
+        <div id="timer">Time Left: 90:00</div>
+        <div id="progress-bar"><div id="progress"></div></div>
+        <div id="quiz-questions">
+            <!-- Questions will be populated here -->
+            <div class="question" id="question-1">
+                <p>1. Question text for aptitude topic 1?</p>
+                <label><input type="radio" name="q1" value="a"> Option A</label><br>
+                <label><input type="radio" name="q1" value="b"> Option B</label><br>
+                <label><input type="radio" name="q1" value="c"> Option C</label><br>
+                <label><input type="radio" name="q1" value="d"> Option D</label>
+            </div>
+            <!-- Repeat for all 80 questions -->
+        </div>
+        <button id="submit">Submit</button>
+        <div id="confirmation-modal" style="display: none;">
+            <p>Are you sure you want to submit?</p>
+            <button id="confirm-submit">Yes</button>
+            <button id="cancel-submit">No</button>
+        </div>
+    </div>
+    <script>
+        // Timer functionality
+        let timeLeft = 5400; // 90 minutes in seconds
+        const timerElement = document.getElementById('timer');
+
+        function updateTimer() {
+            const minutes = Math.floor(timeLeft / 60);
+            const seconds = timeLeft % 60;
+            timerElement.innerHTML = `Time Left: ${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+            if (timeLeft <= 0) {
+                clearInterval(timerInterval);
+                alert('Time is up!');
+            }
+            timeLeft--;
+        }
+        const timerInterval = setInterval(updateTimer, 1000);
+
+        // Progress bar functionality
+        const progressBar = document.getElementById('progress');
+        let progress = 0;
+
+        function updateProgress() {
+            progress = Math.floor((progress + 1) / 80 * 100);
+            progressBar.style.width = `${progress}%`;
+        }
+
+        // Save and load progress
+        document.getElementById('submit').addEventListener('click', function() {
+            // Save progress here
+            updateProgress();
+            document.getElementById('confirmation-modal').style.display = 'block';
+        });
+
+        document.getElementById('confirm-submit').addEventListener('click', function() {
+            // Logic for submitting the quiz
+            alert('Quiz submitted!');
+        });
+    </script>
 </body>
 </html>
