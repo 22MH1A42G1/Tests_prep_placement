@@ -2,169 +2,846 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Placement Quiz – Day 1 & Day 2 (60 Questions)</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Placement Prep Quiz - Enhanced Version</title>
 
 <style>
-body {
-    font-family: Arial, sans-serif;
-    background: #eef2f5;
-    padding: 20px;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    padding: 20px;
+    min-height: 100vh;
+}
+
 .container {
-    max-width: 900px;
+    max-width: 1000px;
     margin: auto;
     background: #fff;
-    padding: 25px;
-    border-radius: 8px;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+    animation: slideIn 0.5s ease-out;
 }
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 h1 {
     text-align: center;
     color: #2c3e50;
+    margin-bottom: 10px;
+    font-size: 28px;
 }
-.question {
+
+.subtitle {
+    text-align: center;
+    color: #7f8c8d;
     margin-bottom: 20px;
 }
-.options label {
-    display: block;
-    padding: 6px;
-    cursor: pointer;
-}
-button {
-    display: block;
-    margin: auto;
-    padding: 12px 20px;
-    background: #3498db;
+
+.timer-section {
+    background: #e74c3c;
     color: white;
+    padding: 15px;
+    border-radius: 10px;
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 24px;
+    font-weight: bold;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.02); }
+}
+
+.progress-container {
+    margin-bottom: 20px;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 30px;
+    background: #ecf0f1;
+    border-radius: 15px;
+    overflow: hidden;
+    position: relative;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #3498db, #2ecc71);
+    width: 0%;
+    transition: width 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+}
+
+.controls {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.btn {
+    padding: 12px 24px;
     border: none;
-    border-radius: 6px;
+    border-radius: 8px;
     font-size: 16px;
     cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 600;
 }
-button:hover {
+
+.btn-primary {
+    background: #3498db;
+    color: white;
+}
+
+.btn-primary:hover {
     background: #2980b9;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3);
 }
+
+.btn-success {
+    background: #2ecc71;
+    color: white;
+}
+
+.btn-success:hover {
+    background: #27ae60;
+    transform: translateY(-2px);
+}
+
+.btn-danger {
+    background: #e74c3c;
+    color: white;
+}
+
+.btn-danger:hover {
+    background: #c0392b;
+    transform: translateY(-2px);
+}
+
+.btn-warning {
+    background: #f39c12;
+    color: white;
+}
+
+.btn-warning:hover {
+    background: #e67e22;
+    transform: translateY(-2px);
+}
+
+.question {
+    margin-bottom: 25px;
+    padding: 20px;
+    background: #f8f9fa;
+    border-radius: 10px;
+    border-left: 5px solid #3498db;
+    transition: all 0.3s ease;
+}
+
+.question:hover {
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transform: translateX(5px);
+}
+
+.question.correct {
+    border-left-color: #2ecc71;
+    background: #d5f4e6;
+}
+
+.question.incorrect {
+    border-left-color: #e74c3c;
+    background: #fadbd8;
+}
+
+.question-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+}
+
+.question-text {
+    font-size: 18px;
+    font-weight: 600;
+    color: #2c3e50;
+    flex: 1;
+}
+
+.difficulty-badge {
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: bold;
+    margin-left: 10px;
+}
+
+.difficulty-easy {
+    background: #2ecc71;
+    color: white;
+}
+
+.difficulty-medium {
+    background: #f39c12;
+    color: white;
+}
+
+.difficulty-hard {
+    background: #e74c3c;
+    color: white;
+}
+
+.topic-badge {
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    background: #9b59b6;
+    color: white;
+    margin-left: 5px;
+}
+
+.options {
+    margin-top: 15px;
+}
+
+.options label {
+    display: block;
+    padding: 12px;
+    margin: 8px 0;
+    cursor: pointer;
+    border-radius: 8px;
+    background: white;
+    border: 2px solid #ddd;
+    transition: all 0.3s ease;
+}
+
+.options label:hover {
+    background: #ecf0f1;
+    border-color: #3498db;
+    transform: translateX(5px);
+}
+
+.options input[type="radio"]:checked + span {
+    font-weight: bold;
+}
+
+.options label.correct-answer {
+    background: #2ecc71;
+    color: white;
+    border-color: #27ae60;
+}
+
+.options label.wrong-answer {
+    background: #e74c3c;
+    color: white;
+    border-color: #c0392b;
+}
+
+.explanation {
+    margin-top: 10px;
+    padding: 12px;
+    background: #fff3cd;
+    border-left: 4px solid #f39c12;
+    border-radius: 5px;
+    font-size: 14px;
+    display: none;
+}
+
+.explanation.show {
+    display: block;
+    animation: fadeIn 0.5s;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
 #result {
-    margin-top: 25px;
-    font-size: 22px;
+    margin-top: 30px;
+    padding: 25px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border-radius: 15px;
     text-align: center;
-    color: green;
+    display: none;
+    animation: slideIn 0.5s;
+}
+
+#result.show {
+    display: block;
+}
+
+.result-score {
+    font-size: 48px;
+    font-weight: bold;
+    margin: 20px 0;
+}
+
+.result-grade {
+    font-size: 32px;
+    margin: 15px 0;
+}
+
+.topic-breakdown {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+    margin-top: 25px;
+}
+
+.topic-card {
+    background: rgba(255,255,255,0.2);
+    padding: 15px;
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+}
+
+.topic-card h3 {
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+
+.topic-card p {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.attempt-history {
+    margin-top: 20px;
+    padding: 15px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 10px;
+}
+
+.attempt-history h3 {
+    margin-bottom: 10px;
+}
+
+.attempt-item {
+    padding: 8px;
+    margin: 5px 0;
+    background: rgba(255,255,255,0.3);
+    border-radius: 5px;
+}
+
+input[type="radio"] {
+    margin-right: 8px;
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 15px;
+    }
+    
+    h1 {
+        font-size: 22px;
+    }
+    
+    .timer-section {
+        font-size: 18px;
+        padding: 12px;
+    }
+    
+    .question-text {
+        font-size: 16px;
+    }
+    
+    .controls {
+        flex-direction: column;
+    }
+    
+    .btn {
+        width: 100%;
+    }
+    
+    .result-score {
+        font-size: 36px;
+    }
+}
+
+.hidden {
+    display: none;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.7);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal.show {
+    display: flex;
+}
+
+.modal-content {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    max-width: 500px;
+    text-align: center;
+    animation: slideIn 0.3s;
+}
+
+.modal-content h2 {
+    margin-bottom: 20px;
+    color: #2c3e50;
+}
+
+.modal-buttons {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin-top: 20px;
 }
 </style>
 </head>
 
 <body>
 <div class="container">
-<h1>Placement Quiz – Day 1 & Day 2</h1>
+<h1>🎯 Advanced Placement Preparation Quiz</h1>
+<p class="subtitle">80 Questions | Multiple Topics | Track Your Progress</p>
+
+<div class="timer-section" id="timer">
+    ⏱️ Time Remaining: <span id="timeDisplay">90:00</span>
+</div>
+
+<div class="progress-container">
+    <div class="progress-bar">
+        <div class="progress-fill" id="progressFill">0%</div>
+    </div>
+</div>
+
+<div class="controls">
+    <button class="btn btn-primary" onclick="saveProgress()">💾 Save Progress</button>
+    <button class="btn btn-warning" onclick="loadProgress()">📂 Load Progress</button>
+    <button class="btn btn-danger" onclick="clearAnswers()">🗑️ Clear Answers</button>
+    <button class="btn btn-success" onclick="showSubmitModal()">✅ Submit Test</button>
+</div>
+
 <form id="quizForm"></form>
-<button onclick="submitQuiz()">Submit Test</button>
+
 <div id="result"></div>
+</div>
+
+<div class="modal" id="submitModal">
+    <div class="modal-content">
+        <h2>⚠️ Submit Quiz?</h2>
+        <p>Are you sure you want to submit your test?</p>
+        <p>You won't be able to change your answers after submission.</p>
+        <div class="modal-buttons">
+            <button class="btn btn-danger" onclick="closeModal()">Cancel</button>
+            <button class="btn btn-success" onclick="submitQuiz()">Confirm Submit</button>
+        </div>
+    </div>
 </div>
 
 <script>
 const questions = [
+/* ================= APTITUDE (25 QUESTIONS) ================= */
+{q:"1. If 20% of x = 40, x = ?", o:["100","200","150","80"], a:1, t:"Aptitude", d:"easy", exp:"20% of x = 40 → (20/100) × x = 40 → x = 200"},
+{q:"2. 3 : 2 = 30 : ?", o:["10","15","20","25"], a:2, t:"Aptitude", d:"easy", exp:"3:2 = 30:x → 3x = 60 → x = 20"},
+{q:"3. Next number: 2, 6, 12, 20, ?", o:["28","30","32","36"], a:1, t:"Aptitude", d:"medium", exp:"Pattern: n(n+1) → 2×1, 2×3, 3×4, 4×5, 5×6 = 30"},
+{q:"4. 25% of 200 = ?", o:["25","50","75","100"], a:1, t:"Aptitude", d:"easy", exp:"25% of 200 = (25/100) × 200 = 50"},
+{q:"5. Profit when CP=100, SP=120?", o:["10","15","20","25"], a:2, t:"Aptitude", d:"easy", exp:"Profit = SP - CP = 120 - 100 = 20"},
+{q:"6. Which is a prime number?", o:["9","15","17","21"], a:2, t:"Aptitude", d:"easy", exp:"17 is divisible only by 1 and 17"},
+{q:"7. Series: 1,4,9,16, ?", o:["20","25","30","36"], a:1, t:"Aptitude", d:"easy", exp:"Perfect squares: 1², 2², 3², 4², 5² = 25"},
+{q:"8. Average of 2,4,6,8?", o:["4","5","6","7"], a:1, t:"Aptitude", d:"easy", exp:"Average = (2+4+6+8)/4 = 20/4 = 5"},
+{q:"9. Simple Interest formula?", o:["PTR/100","PRT","P+I","None"], a:0, t:"Aptitude", d:"easy", exp:"SI = (Principal × Time × Rate)/100"},
+{q:"10. Time = Distance / ?", o:["Speed","Work","Force","Power"], a:0, t:"Aptitude", d:"easy", exp:"Time = Distance/Speed"},
+{q:"11. If a:b=2:3 and sum=25, a=?", o:["10","15","20","5"], a:0, t:"Aptitude", d:"medium", exp:"2x + 3x = 25 → 5x = 25 → x = 5, a = 2×5 = 10"},
+{q:"12. 40% of 250?", o:["100","90","110","120"], a:0, t:"Aptitude", d:"easy", exp:"40% of 250 = (40/100) × 250 = 100"},
+{q:"13. Next: 5,10,20,40, ?", o:["45","50","60","80"], a:3, t:"Aptitude", d:"medium", exp:"Each term is multiplied by 2: 40 × 2 = 80"},
+{q:"14. Speed formula?", o:["D×T","D/T","T/D","None"], a:1, t:"Aptitude", d:"easy", exp:"Speed = Distance/Time"},
+{q:"15. 10% of 500?", o:["25","50","75","100"], a:1, t:"Aptitude", d:"easy", exp:"10% of 500 = (10/100) × 500 = 50"},
+{q:"16. LCM of 12 and 18?", o:["36","54","72","108"], a:0, t:"Aptitude", d:"medium", exp:"LCM(12,18) = 36 (smallest common multiple)"},
+{q:"17. If 3x + 5 = 20, x = ?", o:["3","5","7","10"], a:1, t:"Aptitude", d:"easy", exp:"3x = 15 → x = 5"},
+{q:"18. Compound Interest uses?", o:["Simple formula","Principal + Interest","Exponential growth","Linear growth"], a:2, t:"Aptitude", d:"medium", exp:"CI compounds over time exponentially"},
+{q:"19. HCF of 24 and 36?", o:["6","12","18","24"], a:1, t:"Aptitude", d:"medium", exp:"Highest Common Factor = 12"},
+{q:"20. Ratio 4:5, if first is 20, second?", o:["20","25","30","35"], a:1, t:"Aptitude", d:"easy", exp:"4:5 = 20:x → 4x = 100 → x = 25"},
+{q:"21. 15 is what % of 60?", o:["20%","25%","30%","35%"], a:1, t:"Aptitude", d:"medium", exp:"(15/60) × 100 = 25%"},
+{q:"22. Next: 1,1,2,3,5,8, ?", o:["11","13","15","21"], a:1, t:"Aptitude", d:"hard", exp:"Fibonacci: each = sum of previous two → 5+8=13"},
+{q:"23. Work formula: W = ?", o:["Rate × Time","Time/Rate","Rate + Time","None"], a:0, t:"Aptitude", d:"easy", exp:"Work = Rate × Time"},
+{q:"24. If A:B = 2:3 and B:C = 4:5, A:C = ?", o:["8:15","2:5","6:15","4:9"], a:0, t:"Aptitude", d:"hard", exp:"A:B:C = 8:12:15, so A:C = 8:15"},
+{q:"25. Discount: MP=1000, SP=800, discount%?", o:["10%","15%","20%","25%"], a:2, t:"Aptitude", d:"medium", exp:"Discount = (200/1000) × 100 = 20%"},
 
-/* ================= DAY 1 (30 QUESTIONS) ================= */
+/* ================= DATA STRUCTURES & ALGORITHMS (20 QUESTIONS) ================= */
+{q:"26. Binary search time complexity?", o:["O(n)","O(log n)","O(n²)","O(1)"], a:1, t:"DSA", d:"medium", exp:"Binary search divides array in half each time"},
+{q:"27. Python list index starts from?", o:["0","1","-1","Any"], a:0, t:"DSA", d:"easy", exp:"Python uses 0-based indexing"},
+{q:"28. Which is mutable in Python?", o:["tuple","string","list","int"], a:2, t:"DSA", d:"easy", exp:"Lists can be modified after creation"},
+{q:"29. Worst case of linear search?", o:["O(1)","O(log n)","O(n)","O(n²)"], a:2, t:"DSA", d:"medium", exp:"Must check all n elements in worst case"},
+{q:"30. Stack follows?", o:["FIFO","LIFO","Random","Tree"], a:1, t:"DSA", d:"easy", exp:"Last In First Out - like a stack of plates"},
+{q:"31. Binary search needs?", o:["Sorted array","Large array","Unique elements","None"], a:0, t:"DSA", d:"medium", exp:"Array must be sorted for binary search"},
+{q:"32. Which is LIFO?", o:["Queue","Stack","Array","Tree"], a:1, t:"DSA", d:"easy", exp:"Stack uses Last In First Out"},
+{q:"33. Python uses indentation for?", o:["Loop","Condition","Block","All"], a:3, t:"DSA", d:"easy", exp:"Python uses indentation for all code blocks"},
+{q:"34. Which is immutable?", o:["List","Set","Tuple","Dict"], a:2, t:"DSA", d:"easy", exp:"Tuples cannot be modified after creation"},
+{q:"35. pop() removes from?", o:["Start","End","Random","None"], a:1, t:"DSA", d:"easy", exp:"pop() removes from end of list by default"},
+{q:"36. Which data structure for recursion?", o:["Queue","Stack","Array","Tree"], a:1, t:"DSA", d:"medium", exp:"Recursion uses call stack internally"},
+{q:"37. Time complexity of array element access?", o:["O(n)","O(log n)","O(1)","O(n²)"], a:2, t:"DSA", d:"easy", exp:"Direct access by index is constant time"},
+{q:"38. Queue follows?", o:["FIFO","LIFO","Random","None"], a:0, t:"DSA", d:"easy", exp:"First In First Out - like a line of people"},
+{q:"39. Best sorting algorithm average case?", o:["Bubble","Merge","Selection","Insertion"], a:1, t:"DSA", d:"hard", exp:"Merge sort has O(n log n) in all cases"},
+{q:"40. Hash table average lookup time?", o:["O(1)","O(n)","O(log n)","O(n²)"], a:0, t:"DSA", d:"medium", exp:"Hash tables provide constant average lookup"},
+{q:"41. DFS uses which structure?", o:["Queue","Stack","Array","Heap"], a:1, t:"DSA", d:"medium", exp:"Depth-First Search uses stack"},
+{q:"42. BFS uses which structure?", o:["Queue","Stack","Array","Heap"], a:0, t:"DSA", d:"medium", exp:"Breadth-First Search uses queue"},
+{q:"43. Linked list insertion at start?", o:["O(1)","O(n)","O(log n)","O(n²)"], a:0, t:"DSA", d:"medium", exp:"Just update head pointer - constant time"},
+{q:"44. Binary tree max nodes at level h?", o:["h","2^h","h²","2h"], a:1, t:"DSA", d:"hard", exp:"Each level doubles: 2^h nodes"},
+{q:"45. Which is stable sort?", o:["Quick","Heap","Merge","Selection"], a:2, t:"DSA", d:"hard", exp:"Merge sort maintains relative order"},
 
-{q:"1. If 20% of x = 40, x = ?", o:["100","200","150","80"], a:1},
-{q:"2. 3 : 2 = 30 : ?", o:["10","15","20","25"], a:2},
-{q:"3. Next number: 2, 6, 12, 20, ?", o:["28","30","32","36"], a:1},
-{q:"4. 25% of 200 = ?", o:["25","50","75","100"], a:1},
-{q:"5. Profit when CP=100, SP=120?", o:["10","15","20","25"], a:2},
-{q:"6. Which is a prime number?", o:["9","15","17","21"], a:2},
-{q:"7. Series: 1,4,9,16, ?", o:["20","25","30","36"], a:1},
-{q:"8. Average of 2,4,6,8?", o:["4","5","6","7"], a:1},
-{q:"9. Simple Interest formula?", o:["PTR/100","PRT","P+I","None"], a:0},
-{q:"10. Time = Distance / ?", o:["Speed","Work","Force","Power"], a:0},
+/* ================= DATABASE MANAGEMENT (15 QUESTIONS) ================= */
+{q:"46. DBMS stands for?", o:["Database Management System","Data Basic MS","Digital Base","None"], a:0, t:"DBMS", d:"easy", exp:"Database Management System"},
+{q:"47. SQL is?", o:["Procedural","Query language","OS","Compiler"], a:1, t:"DBMS", d:"easy", exp:"Structured Query Language"},
+{q:"48. Primary key allows?", o:["Duplicates","NULL","Unique non-null","Multiple"], a:2, t:"DBMS", d:"medium", exp:"Primary key must be unique and not null"},
+{q:"49. Which is DDL?", o:["SELECT","INSERT","CREATE","UPDATE"], a:2, t:"DBMS", d:"medium", exp:"CREATE is Data Definition Language"},
+{q:"50. Which SQL command removes table?", o:["DELETE","DROP","REMOVE","TRUNCATE"], a:1, t:"DBMS", d:"medium", exp:"DROP TABLE removes entire table"},
+{q:"51. Foreign key is used to?", o:["Identify row","Ensure uniqueness","Link tables","Sort data"], a:2, t:"DBMS", d:"medium", exp:"Foreign key creates relationship between tables"},
+{q:"52. Which normal form removes partial dependency?", o:["1NF","2NF","3NF","BCNF"], a:1, t:"DBMS", d:"hard", exp:"2NF eliminates partial dependencies"},
+{q:"53. ACID stands for?", o:["Atomic, Consistent, Isolated, Durable","All, Create, Insert, Delete","Auto, Check, Index, Data","None"], a:0, t:"DBMS", d:"medium", exp:"ACID properties ensure reliable transactions"},
+{q:"54. Which is DML command?", o:["CREATE","ALTER","INSERT","DROP"], a:2, t:"DBMS", d:"medium", exp:"INSERT is Data Manipulation Language"},
+{q:"55. JOIN combines?", o:["Rows","Columns","Tables","Databases"], a:2, t:"DBMS", d:"medium", exp:"JOIN combines data from multiple tables"},
+{q:"56. Which is fastest: DELETE or TRUNCATE?", o:["DELETE","TRUNCATE","Same","Depends"], a:1, t:"DBMS", d:"hard", exp:"TRUNCATE is faster, no logging individual rows"},
+{q:"57. Index improves?", o:["Write speed","Read speed","Both","Neither"], a:1, t:"DBMS", d:"medium", exp:"Index speeds up read/search operations"},
+{q:"58. GROUP BY is used with?", o:["WHERE","ORDER BY","Aggregate functions","JOIN"], a:2, t:"DBMS", d:"medium", exp:"GROUP BY works with aggregate functions"},
+{q:"59. Which is NOT a constraint?", o:["PRIMARY KEY","FOREIGN KEY","INDEX","UNIQUE"], a:2, t:"DBMS", d:"hard", exp:"INDEX is not a constraint, it's for optimization"},
+{q:"60. Transaction property ensuring all-or-nothing?", o:["Atomicity","Consistency","Isolation","Durability"], a:0, t:"DBMS", d:"medium", exp:"Atomicity ensures complete or no execution"},
 
-{q:"11. Binary search time complexity?", o:["O(n)","O(log n)","O(n²)","O(1)"], a:1},
-{q:"12. Python list index starts from?", o:["0","1","-1","Any"], a:0},
-{q:"13. Which is mutable in Python?", o:["tuple","string","list","int"], a:2},
-{q:"14. Worst case of linear search?", o:["O(1)","O(log n)","O(n)","O(n²)"], a:2},
-{q:"15. Stack follows?", o:["FIFO","LIFO","Random","Tree"], a:1},
+/* ================= OBJECT-ORIENTED PROGRAMMING (10 QUESTIONS) ================= */
+{q:"61. OOP principle for data hiding?", o:["Inheritance","Encapsulation","Polymorphism","Abstraction"], a:1, t:"OOP", d:"medium", exp:"Encapsulation hides internal details"},
+{q:"62. Java uses which keyword to inherit?", o:["this","super","extends","implements"], a:2, t:"OOP", d:"easy", exp:"extends keyword for inheritance"},
+{q:"63. Object is instance of?", o:["Method","Variable","Class","Package"], a:2, t:"OOP", d:"easy", exp:"Objects are created from classes"},
+{q:"64. Java multiple inheritance avoided due to?", o:["Speed","Ambiguity","Memory","Syntax"], a:1, t:"OOP", d:"medium", exp:"Diamond problem causes ambiguity"},
+{q:"65. Interface uses?", o:["extends","implements","super","this"], a:1, t:"OOP", d:"easy", exp:"implements keyword for interfaces"},
+{q:"66. JVM converts bytecode to?", o:["Assembly","Machine code","Python","C"], a:1, t:"OOP", d:"medium", exp:"JVM converts to machine code"},
+{q:"67. Polymorphism means?", o:["One form","Many forms","No form","Two forms"], a:1, t:"OOP", d:"medium", exp:"Poly=many, morph=forms"},
+{q:"68. Constructor has?", o:["Return type","No return type","void","int"], a:1, t:"OOP", d:"easy", exp:"Constructors have no return type"},
+{q:"69. Overloading is?", o:["Compile-time polymorphism","Runtime polymorphism","Inheritance","Encapsulation"], a:0, t:"OOP", d:"hard", exp:"Method overloading resolved at compile time"},
+{q:"70. Abstract class can have?", o:["Only abstract methods","Only concrete methods","Both","Neither"], a:2, t:"OOP", d:"medium", exp:"Abstract class can have both types"},
 
-{q:"16. OS full form?", o:["Open System","Operating System","Order System","Optical System"], a:1},
-{q:"17. Which manages memory?", o:["Compiler","OS","CPU","User"], a:1},
-{q:"18. Which is not OS type?", o:["Batch","Real-time","Compiler","Distributed"], a:2},
-{q:"19. Process is?", o:["Program in execution","Program","Thread","CPU"], a:0},
+/* ================= CLOUD & WEB TECHNOLOGIES (10 QUESTIONS) ================= */
+{q:"71. AWS full form?", o:["Amazon Web Service","Amazon Web Services","Advanced Web Service","None"], a:1, t:"Cloud", d:"easy", exp:"Amazon Web Services (plural)"},
+{q:"72. EC2 is?", o:["Storage","Compute","Database","Network"], a:1, t:"Cloud", d:"medium", exp:"Elastic Compute Cloud - virtual servers"},
+{q:"73. Security group acts as?", o:["Firewall","Router","Switch","Server"], a:0, t:"Cloud", d:"medium", exp:"Security groups are virtual firewalls"},
+{q:"74. S3 is?", o:["Compute","Storage","Network","DB"], a:1, t:"Cloud", d:"easy", exp:"Simple Storage Service"},
+{q:"75. Which AWS service is serverless?", o:["EC2","Lambda","S3","VPC"], a:1, t:"Cloud", d:"medium", exp:"Lambda runs code without managing servers"},
+{q:"76. HTML stands for?", o:["High Text ML","Hyper Text Markup Language","Home Tool ML","None"], a:1, t:"Web", d:"easy", exp:"HyperText Markup Language"},
+{q:"77. CSS used for?", o:["Structure","Style","Logic","DB"], a:1, t:"Web", d:"easy", exp:"Cascading Style Sheets for styling"},
+{q:"78. HTML tag for link?", o:["a","p","link","href"], a:0, t:"Web", d:"easy", exp:"<a> anchor tag for hyperlinks"},
+{q:"79. CSS selector starts with # for?", o:["Class","ID","Tag","All"], a:1, t:"Web", d:"easy", exp:"# is used for ID selectors"},
+{q:"80. Which is frontend?", o:["Python","HTML","SQL","Java"], a:1, t:"Web", d:"easy", exp:"HTML is used in browser/frontend"
+};
 
-{q:"20. OOP principle for data hiding?", o:["Inheritance","Encapsulation","Polymorphism","Abstraction"], a:1},
-{q:"21. Java uses which keyword to inherit?", o:["this","super","extends","implements"], a:2},
-{q:"22. Object is instance of?", o:["Method","Variable","Class","Package"], a:2},
+let timeLeft = 5400; // 90 minutes in seconds
+let timerInterval;
+let quizSubmitted = false;
 
-{q:"23. AWS full form?", o:["Amazon Web Service","Amazon Web Services","Advanced Web Service","None"], a:1},
-{q:"24. EC2 is?", o:["Storage","Compute","Database","Network"], a:1},
-{q:"25. HTML stands for?", o:["High Text ML","Hyper Text Markup Language","Home Tool ML","None"], a:1},
-
-/* ================= DAY 2 (30 QUESTIONS) ================= */
-
-{q:"26. If a:b=2:3 and sum=25, a=?", o:["10","15","20","5"], a:0},
-{q:"27. 40% of 250?", o:["100","90","110","120"], a:0},
-{q:"28. Next: 5,10,20,40, ?", o:["45","50","60","80"], a:3},
-{q:"29. Speed formula?", o:["D×T","D/T","T/D","None"], a:1},
-{q:"30. 10% of 500?", o:["25","50","75","100"], a:1},
-
-{q:"31. Binary search needs?", o:["Sorted array","Large array","Unique","None"], a:0},
-{q:"32. Which is LIFO?", o:["Queue","Stack","Array","Tree"], a:1},
-{q:"33. Python uses indentation for?", o:["Loop","Condition","Block","All"], a:3},
-{q:"34. Which is immutable?", o:["List","Set","Tuple","Dict"], a:2},
-{q:"35. pop() removes from?", o:["Start","End","Random","None"], a:1},
-
-{q:"36. DBMS stands for?", o:["Database Management System","Data Basic MS","Digital Base","None"], a:0},
-{q:"37. SQL is?", o:["Procedural","Query language","OS","Compiler"], a:1},
-{q:"38. Primary key allows?", o:["Duplicates","NULL","Unique","Multiple"], a:2},
-{q:"39. Which is DDL?", o:["SELECT","INSERT","CREATE","UPDATE"], a:2},
-
-{q:"40. Java multiple inheritance avoided due to?", o:["Speed","Ambiguity","Memory","Syntax"], a:1},
-{q:"41. Interface uses?", o:["extends","implements","super","this"], a:1},
-{q:"42. JVM converts bytecode to?", o:["Assembly","Machine code","Python","C"], a:1},
-
-{q:"43. Security group acts as?", o:["Firewall","Router","Switch","Server"], a:0},
-{q:"44. S3 is?", o:["Compute","Storage","Network","DB"], a:1},
-{q:"45. CSS used for?", o:["Structure","Style","Logic","DB"], a:1},
-
-{q:"46. HTML tag for link?", o:["a","p","link","href"], a:0},
-{q:"47. CSS selector starts with #?", o:["Class","ID","Tag","All"], a:1},
-{q:"48. Which is frontend?", o:["Python","HTML","SQL","Java"], a:1},
-{q:"49. REST uses?", o:["HTTP","FTP","SMTP","TCP"], a:0},
-{q:"50. GET method used for?", o:["Insert","Update","Fetch","Delete"], a:2}
-/* ===== ADDITIONAL QUESTIONS TO MAKE TOTAL = 60 ===== */
-
-{q:"51. Which data structure is used for recursion?", o:["Queue","Stack","Array","Tree"], a:1},
-{q:"52. Time complexity of accessing array element?", o:["O(n)","O(log n)","O(1)","O(n²)"], a:2},
-{q:"53. Which SQL command removes a table?", o:["DELETE","DROP","REMOVE","TRUNCATE"], a:1},
-{q:"54. Foreign key is used to?", o:["Identify row","Ensure uniqueness","Link tables","Sort data"], a:2},
-{q:"55. Which normal form removes partial dependency?", o:["1NF","2NF","3NF","BCNF"], a:1},
-
-{q:"56. Which AWS service is serverless?", o:["EC2","Lambda","S3","VPC"], a:1},
-{q:"57. Default port of HTTP?", o:["21","22","80","443"], a:2},
-{q:"58. CSS property for spacing inside border?", o:["margin","padding","border","gap"], a:1},
-{q:"59. Which is backend language?", o:["HTML","CSS","JavaScript","Python"], a:3},
-{q:"60. POST method is used for?", o:["Fetch data","Update data","Send data","Delete data"], a:2}
-];
-
-const form = document.getElementById("quizForm");
-
-questions.forEach((q, i) => {
-    let html = `<div class="question"><b>${q.q}</b>`;
-    q.o.forEach((opt, idx) => {
-        html += `
-        <label>
-        <input type="radio" name="q${i}" value="${idx}"> ${opt}
-        </label>`;
-    });
-    html += `</div>`;
-    form.innerHTML += html;
-});
-
-function submitQuiz() {
-    let score = 0;
+// Initialize quiz
+function initQuiz() {
+    const form = document.getElementById("quizForm");
+    form.innerHTML = '';
+    
     questions.forEach((q, i) => {
-        let ans = document.querySelector(`input[name="q${i}"]:checked`);
-        if (ans && parseInt(ans.value) === q.a) score++;
+        let html = `<div class="question" id="question${i}">
+            <div class="question-header">
+                <span class="question-text">${q.q}</span>
+                <div>
+                    <span class="difficulty-badge difficulty-${q.d}">${q.d.toUpperCase()}</span>
+                    <span class="topic-badge">${q.t}</span>
+                </div>
+            </div>
+            <div class="options">`;
+        
+        q.o.forEach((opt, idx) => {
+            html += `
+            <label id="q${i}opt${idx}">
+                <input type="radio" name="q${i}" value="${idx}" onchange="updateProgress()">
+                <span>${opt}</span>
+            </label>`;
+        });
+        
+        html += `</div>
+            <div class="explanation" id="exp${i}">${q.exp}</div>
+        </div>`;
+        form.innerHTML += html;
     });
-    document.getElementById("result").innerHTML =
-        `🎯 Your Score: ${score} / ${questions.length}`;
+    
+    startTimer();
+    updateProgress();
 }
+
+// Timer
+function startTimer() {
+    timerInterval = setInterval(() => {
+        if (timeLeft <= 0 || quizSubmitted) {
+            clearInterval(timerInterval);
+            if (!quizSubmitted) {
+                alert("Time's up! Submitting automatically...");
+                submitQuiz();
+            }
+            return;
+        }
+        
+        timeLeft--;
+        const minutes = Math.floor(timeLeft / 60);
+        const seconds = timeLeft % 60;
+        document.getElementById("timeDisplay").textContent = 
+            \\`${minutes}:${seconds.toString().padStart(2, '0')}\\`;
+                
+        if (timeLeft <= 300) { // Last 5 minutes
+            document.getElementById("timer").style.background = "#c0392b";
+        }
+    }, 1000);
+}
+
+// Progress tracking
+function updateProgress() {
+    let answered = 0;
+    questions.forEach((q, i) => {
+        const ans = document.querySelector(`input[name="q${i}"]:checked`);
+        if (ans) answered++;
+    });
+    
+    const percentage = Math.round((answered / questions.length) * 100);
+    const fill = document.getElementById("progressFill");
+    fill.style.width = percentage + "%";
+    fill.textContent = \\`${answered}/${questions.length} (${percentage}%)\\`;
+}
+
+// Save progress
+function saveProgress() {
+    const answers = {};
+    questions.forEach((q, i) => {
+        const ans = document.querySelector(`input[name="q${i}"]:checked`);
+        if (ans) answers[i] = parseInt(ans.value);
+    });
+    
+    localStorage.setItem('quizAnswers', JSON.stringify(answers));
+    localStorage.setItem('quizTimeLeft', timeLeft);
+    alert('✅ Progress saved successfully!');
+}
+
+// Load progress
+function loadProgress() {
+    const saved = localStorage.getItem('quizAnswers');
+    const savedTime = localStorage.getItem('quizTimeLeft');
+    
+    if (!saved) {
+        alert('No saved progress found!');
+        return;
+    }
+    
+    const answers = JSON.parse(saved);
+    Object.keys(answers).forEach(i => {
+        const radio = document.querySelector(`input[name="q${i}"][value="${answers[i]}"]`);
+        if (radio) radio.checked = true;
+    });
+    
+    if (savedTime) {
+        timeLeft = parseInt(savedTime);
+    }
+    
+    updateProgress();
+    alert('✅ Progress loaded successfully!');
+}
+
+// Clear answers
+function clearAnswers() {
+    if (confirm('Are you sure you want to clear all answers?')) {
+        questions.forEach((q, i) => {
+            const radios = document.querySelectorAll(`input[name="q${i}"]`);
+            radios.forEach(r => r.checked = false);
+        });
+        updateProgress();
+        alert('All answers cleared!');
+    }
+}
+
+// Show submit modal
+function showSubmitModal() {
+    document.getElementById('submitModal').classList.add('show');
+}
+
+// Close modal
+function closeModal() {
+    document.getElementById('submitModal').classList.remove('show');
+}
+
+// Submit quiz
+function submitQuiz() {
+    closeModal();
+    quizSubmitted = true;
+    clearInterval(timerInterval);
+    
+    let score = 0;
+    const topicScores = {};
+    
+    questions.forEach((q, i) => {
+        if (!topicScores[q.t]) {
+            topicScores[q.t] = {correct: 0, total: 0};
+        }
+        topicScores[q.t].total++;
+        
+        const ans = document.querySelector(`input[name="q${i}"]:checked`);
+        const questionDiv = document.getElementById(`question${i}`);
+        const expDiv = document.getElementById(`exp${i}`);
+        
+        if (ans && parseInt(ans.value) === q.a) {
+            score++;
+            topicScores[q.t].correct++;
+            questionDiv.classList.add('correct');
+            document.getElementById(`q${i}opt${q.a}`).classList.add('correct-answer');
+        } else {
+            questionDiv.classList.add('incorrect');
+            if (ans) {
+                document.getElementById(`q${i}opt${parseInt(ans.value)}`).classList.add('wrong-answer');
+            }
+            document.getElementById(`q${i}opt${q.a}`).classList.add('correct-answer');
+        }
+        
+        expDiv.classList.add('show');
+    });
+    
+    // Calculate grade
+    const percentage = (score / questions.length) * 100;
+    let grade;
+    if (percentage >= 90) grade = 'A+ Outstanding!';
+    else if (percentage >= 80) grade = 'A Excellent!';
+    else if (percentage >= 70) grade = 'B+ Very Good!';
+    else if (percentage >= 60) grade = 'B Good!';
+    else if (percentage >= 50) grade = 'C Pass';
+    else grade = 'F Need Improvement';
+    
+    // Display results
+    let resultHTML = `
+        <h2>🎉 Quiz Completed!</h2>
+        <div class="result-score">${score} / ${questions.length}</div>
+        <div class="result-grade">${grade}</div>
+        <p style="font-size: 20px;">Percentage: ${percentage.toFixed(2)}%</p>
+        <p>Time taken: ${formatTime(5400 - timeLeft)}</p>
+        
+        <div class="topic-breakdown">
+    `;
+    
+    Object.keys(topicScores).forEach(topic => {
+        const t = topicScores[topic];
+        const topicPercent = ((t.correct / t.total) * 100).toFixed(1);
+        resultHTML += `
+            <div class="topic-card">
+                <h3>${topic}</h3>
+                <p>${t.correct}/${t.total}</p>
+                <p style="font-size: 16px;">${topicPercent}%</p>
+            </div>
+        `;
+    });
+    
+    resultHTML += `</div>`;
+    
+    // Save attempt
+    saveAttempt(score, percentage);
+    
+    // Show history
+    const history = getAttemptHistory();
+    if (history.length > 0) {
+        resultHTML += `
+            <div class="attempt-history">
+                <h3>📊 Your Attempt History</h3>
+        `;
+        history.slice(-5).reverse().forEach((attempt, i) => {
+            resultHTML += `
+                <div class="attempt-item">
+                    Attempt ${history.length - i}: ${attempt.score}/${questions.length} 
+                    (${attempt.percentage.toFixed(1)}%) - ${attempt.date}
+                </div>
+            `;
+        });
+        resultHTML += `</div>`;
+    }
+    
+    resultHTML += `
+        <button class="btn btn-primary" style="margin-top: 20px;" onclick="restartQuiz()">
+            🔄 Restart Quiz
+        </button>
+    `;
+    
+    const resultDiv = document.getElementById('result');
+    resultDiv.innerHTML = resultHTML;
+    resultDiv.classList.add('show');
+    
+    // Scroll to top
+    window.scrollTo({top: 0, behavior: 'smooth'});
+}
+
+// Format time
+function formatTime(seconds) {
+    const mins = Math.floor(seconds / 60);
+    const secs = seconds % 60;
+    return \\`${mins}m ${secs}s\\`;
+}
+
+// Save attempt
+function saveAttempt(score, percentage) {
+    const attempts = JSON.parse(localStorage.getItem('quizAttempts') || '[]');
+    attempts.push({
+        score: score,
+        percentage: percentage,
+        date: new Date().toLocaleString(),
+        total: questions.length
+    });
+    localStorage.setItem('quizAttempts', JSON.stringify(attempts));
+}
+
+// Get attempt history
+function getAttemptHistory() {
+    return JSON.parse(localStorage.getItem('quizAttempts') || '[]');
+}
+
+// Restart quiz
+function restartQuiz() {
+    if (confirm('Start a new attempt? Current results will be saved in history.')) {
+        location.reload();
+    }
+}
+
+// Initialize on load
+window.onload = initQuiz;
+
+// Prevent accidental page close
+window.onbeforeunload = function(e) {
+    if (!quizSubmitted) {
+        e.preventDefault();
+        return 'You have unsaved progress. Are you sure you want to leave?';
+    }
+};
 </script>
 
 </body>
